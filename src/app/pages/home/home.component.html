@@ -1,0 +1,60 @@
+<section class="todoapp">
+  <header class="header">
+
+    <div class="container">
+      <h1 class="container__title">My Day</h1>
+      <p class="container__descripcion">All my tasks in one place</p>
+      <input
+        class="new-todo"
+        placeholder="Type new todo"
+        autofocus type="text"
+        [formControl]="newTaskCtrl"
+        (keydown.enter)="changeHandler()"
+      />
+    </div>
+
+  </header>
+  <div class="container todoapp-wrapper">
+
+    <section class="main">
+
+      <ul class="todo-list">
+
+        <li *ngFor="let task of tasksByFilter(); index as i" [class.completed]="task.completed"
+          (dblclick)="editingTask(i)" [class.editing]="task.editing">
+          <div class="view">
+            <input class="toggle" type="checkbox" [checked]="task.completed" name="checkTask" (change)="updateTaskCompleted(i)" />
+            <label for="checkTask">{{ task.title }}</label>
+            <button class="destroy" (click)="deleteTask(i)"></button>
+          </div>
+          <input class="edit" [value]="task.title" (keydown.enter)="updateTitleTask(i, $event)" />
+        </li>
+
+      </ul>
+
+    </section>
+
+    <footer class="footer" *ngIf="tasks().length">
+
+      <span class="todo-count">
+        <strong>{{ tasksByFilter().length }}</strong>
+        <span>{{ tasksByFilter().length>1 ? ' Items': ' Item' }}</span>
+      </span>
+
+      <ul class="filters">
+        <li>
+          <a (click)="changeFilter('all')" [class.selected]="filter() == 'all'">All</a>
+        </li>
+        <li>
+          <a (click)="changeFilter('pending')" [class.selected]="filter() == 'pending'">Pending</a>
+        </li>
+        <li>
+          <a (click)="changeFilter('completed')" [class.selected]="filter() == 'completed'">Completed</a>
+        </li>
+      </ul>
+
+      <button class="clear-completed" (click)="clearTaskCompleted()">Clear completed</button>
+
+    </footer>
+  </div>
+</section>
