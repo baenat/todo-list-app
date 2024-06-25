@@ -2,23 +2,27 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, effect, signal } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CapitalizeInputDirective } from '../../shared/directives/capitalize-input.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, CapitalizeInputDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  minChars: number = 5;
+  maxChars: number = 50;
 
   newTaskCtrl = new FormControl('',
     {
       nonNullable: true,
       validators: [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20)
+        Validators.minLength(this.minChars),
+        Validators.maxLength(this.maxChars)
       ]
     }
   );
@@ -70,7 +74,7 @@ export class HomeComponent {
       if (isValid) {
         this.addTask(this.newTaskCtrl.value);
       }
-      this.newTaskCtrl.reset();
+      this.newTaskCtrl.setValue('');
     }
   }
 
@@ -107,7 +111,6 @@ export class HomeComponent {
   }
 
   editingTask = (index: number) => {
-    console.log('index => ', index)
     this.tasks.update((tasks) => {
       return tasks.map((task, position) => {
         return {
