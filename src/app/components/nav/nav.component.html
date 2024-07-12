@@ -1,0 +1,8 @@
+<nav>
+  <a routerLink="/" ></a>
+  <select name="locale" id="locale">
+    @for (locale of locales; track locale.value) {
+      <option [value]="locale.value">{{ locale.name }}</option>
+    }
+  </select>
+</nav>

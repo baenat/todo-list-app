@@ -3,11 +3,13 @@ import { Component, computed, effect, signal } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CapitalizeInputDirective } from '../../shared/directives/capitalize-input.directive';
+import { NavComponent } from '../../components/nav/nav.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, CapitalizeInputDirective],
+  imports: [CommonModule, ReactiveFormsModule, CapitalizeInputDirective, NavComponent, TranslateModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

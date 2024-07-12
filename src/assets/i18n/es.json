@@ -1,0 +1,11 @@
+{
+  "title": "Mi día",
+  "description": "Todas mis tareas en un solo lugar",
+  "placeholder": "Escribe una tarea pendiente",
+  "items": "Árticulos",
+  "item": "Árticulo",
+  "btnAll": "Todo",
+  "btnPending": "Pendiente",
+  "btnCompleted": "Completado",
+  "btnClearCompleted": "Limpiar completadas"
+}
