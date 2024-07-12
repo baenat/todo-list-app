@@ -1,16 +1,23 @@
 <section class="todoapp">
+
   <header class="header">
 
+    <app-nav></app-nav>
+
     <div class="container">
-      <h1 class="container__title">My Day</h1>
+      <h1 class="container__title">{{ "title" | translate }}</h1>
       <p class="container__descripcion">All my tasks in one place</p>
       <input
-        class="new-todo"
+        capitalizeInput
+        class="container__new-todo"
         placeholder="Type new todo"
-        autofocus type="text"
+        autofocus
+        type="text"
         [formControl]="newTaskCtrl"
         (keydown.enter)="changeHandler()"
+        [attr.maxlength]="maxChars"
       />
+      <p class="container__chars">{{ maxChars - newTaskCtrl.value.length}}</p>
     </div>
 
   </header>
@@ -42,13 +49,13 @@
       </span>
 
       <ul class="filters">
-        <li>
+        <li class="filters__link">
           <a (click)="changeFilter('all')" [class.selected]="filter() == 'all'">All</a>
         </li>
-        <li>
+        <li class="filters__link">
           <a (click)="changeFilter('pending')" [class.selected]="filter() == 'pending'">Pending</a>
         </li>
-        <li>
+        <li class="filters__link">
           <a (click)="changeFilter('completed')" [class.selected]="filter() == 'completed'">Completed</a>
         </li>
       </ul>

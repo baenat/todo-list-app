@@ -1,0 +1,19 @@
+nav {
+  display: flex;
+  font-size: 1.2rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem;
+
+  select {
+    background-color: transparent;
+    color: #fff;
+    border-radius: 5px;
+    padding: .5rem;
+  }
+
+  option {
+    color: #000;
+  }
+}

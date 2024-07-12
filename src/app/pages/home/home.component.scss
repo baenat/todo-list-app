@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   min-width: 230px;
   max-width: 550px;
   margin: 0 auto;
@@ -24,6 +25,26 @@
 .hidden {
   display: none;
 }
+
+/* Input */
+
+.container__new-todo:focus + .container__chars {
+  color: var(--color-invalid);
+}
+
+.container__new-todo:focus.ng-touched.ng-invalid {
+  border: 1px solid var(--color-invalid);
+}
+
+.container__new-todo:focus.ng-valid + .container__chars {
+  color: var(--color-valid);
+}
+
+.container__new-todo:focus.ng-touched.ng-valid {
+  border: 1px solid var(--color-valid);
+}
+
+/* Fin Input */
 
 .todoapp-wrapper {
   position: relative;
@@ -67,7 +88,7 @@
   padding-bottom: 1.2rem;
 }
 
-.new-todo,
+.container__new-todo,
 .edit {
   position: relative;
   margin: 0;
@@ -85,7 +106,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.new-todo {
+.container__new-todo {
   padding: 2rem;
   height: 65px;
   border: none;
@@ -338,6 +359,19 @@ html .clear-completed:active {
   text-decoration: underline;
 }
 
+.filters__link {
+  cursor: pointer;
+}
+
+.container__chars {
+  position: absolute;
+  font-weight: 500;
+  font-style: italic;
+  color: #949494;
+  top: 153px;
+  right: 8px;
+}
+
 /*
 	Hack to remove background from Mobile Safari.
 	Can't use it globally since it destroys checkboxes in Firefox
@@ -360,6 +394,10 @@ html .clear-completed:active {
 
   .filters {
     bottom: 10px;
+  }
+
+  .container {
+    max-width: 400px;
   }
 
   .container__title,

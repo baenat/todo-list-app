@@ -1,0 +1,11 @@
+{
+  "title": "My Day",
+  "description": "All my tasks in one place",
+  "placeholder": "Type new todo",
+  "items": "Items",
+  "item": "Item",
+  "btnAll": "All",
+  "btnPending": "Pending",
+  "btnCompleted": "Completed",
+  "btnClearCompleted": "Clear completed"
+}
