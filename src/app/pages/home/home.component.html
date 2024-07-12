@@ -1,8 +1,11 @@
 <section class="todoapp">
+
   <header class="header">
 
+    <app-nav></app-nav>
+
     <div class="container">
-      <h1 class="container__title">My Day</h1>
+      <h1 class="container__title">{{ "title" | translate }}</h1>
       <p class="container__descripcion">All my tasks in one place</p>
       <input
         capitalizeInput
