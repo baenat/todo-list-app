@@ -1,8 +1,9 @@
 .container {
   position: relative;
   min-width: 230px;
-  max-width: 550px;
+  max-width: 650px;
   margin: 0 auto;
+  width: 90%;
 }
 
 .header {
@@ -67,7 +68,7 @@
   color: rgba(0, 0, 0, 0.4);
 }
 
-.todoapp input::input-placeholder {
+.todoapp input::placeholder {
   font-style: italic;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.4);
@@ -387,7 +388,14 @@ html .clear-completed:active {
   }
 }
 
-@media (max-width: 430px) {
+@media screen and (max-width: 530px) {
+  .container__new-todo,
+  .todo-list li label {
+    font-size: clamp(12px, 5vw, 32px);
+  }
+}
+
+@media screen and (max-width: 430px) {
   .footer {
     height: 50px;
   }
@@ -400,8 +408,16 @@ html .clear-completed:active {
     max-width: 400px;
   }
 
+  .container__new-todo {
+    padding-left: 1rem;
+  }
+
   .container__title,
   .container__descripcion {
     text-align: center;
+  }
+
+  .todo-list li {
+    padding: 0rem 0.5rem;
   }
 }
